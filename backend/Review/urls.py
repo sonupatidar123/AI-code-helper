@@ -1,4 +1,4 @@
-from .views import review_code
+from .views import review_code, health_check
 from django.urls import path
 
 urlpatterns = [

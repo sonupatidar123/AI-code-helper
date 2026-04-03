@@ -9,89 +9,80 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [ count, setCount ] = useState(0)
-  const [ code, setCode ] = useState(` function sum() {
-  return 1 + 1
-}`)
-
-  const [ review, setReview ] = useState(``)
-  const [ loading, setLoading ] = useState(false)
-  const [ error, setError ] = useState(``)
+  const [code, setCode] = useState(`function sum() {\n  return 1 + 1\n}`)
+  const [review, setReview] = useState(``)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(``)
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     prism.highlightAll()
   }, [])
 
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
+
   async function reviewCode() {
-    if (loading) return; // Prevent multiple clicks
-    
+    if (loading) return
     setLoading(true)
     setError(``)
-    setReview(``)
-    
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/review/', { code })
-      
-      if (response.data.review) {
-        setReview(response.data.review)
-        setError(``)
-      } else {
-        setError("No review received")
-        setReview(``)
-      }
+      setReview(response.data.review || "No review received")
     } catch (err) {
-      console.error("Error:", err)
-      const errorMessage = err.response?.data?.error || err.message || "Failed to review code"
-      setError(errorMessage)
-      setReview(``)
+      setError(err.response?.data?.error || err.message || "Failed to review code")
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <>
-      <main>
-        <div className="left">
-          <div className="code">
+    <div className="app-container" data-theme={theme}>
+      <header className="navbar">
+        <div className="logo">CodeReviewer<span>.ai</span></div>
+        <div className="actions">
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+          </button>
+          <button 
+            className={`review-btn ${loading ? 'loading' : ''}`} 
+            onClick={reviewCode}
+            disabled={loading}
+          >
+            {loading ? 'Analyzing...' : 'Review Code'}
+          </button>
+        </div>
+      </header>
+
+      <main className="split-view">
+        <section className="pane editor-pane">
+          <div className="pane-header">Input Code</div>
+          <div className="editor-wrapper">
             <Editor
               value={code}
               onValueChange={code => setCode(code)}
               highlight={code => prism.highlight(code, prism.languages.javascript, "javascript")}
-              padding={10}
-              style={{
-                fontFamily: '"Fira code", "Fira Mono", monospace',
-                fontSize: 16,
-                border: "1px solid #ddd",
-                borderRadius: "5px",
-                height: "100%",
-                width: "100%"
-              }}
+              padding={20}
+              className="code-editor"
             />
           </div>
-          <div
-            onClick={reviewCode}
-            disabled={loading}
-            className="review"
-            style={{ opacity: loading ? 0.6 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}>
-            {loading ? 'Reviewing...' : 'Review'}
+        </section>
+
+        <section className="pane output-pane">
+          <div className="pane-header">AI Feedback</div>
+          <div className="markdown-content">
+            {error && <div className="error-box"><strong>Error:</strong> {error}</div>}
+            {review ? (
+              <Markdown rehypePlugins={[rehypeHighlight]}>{review}</Markdown>
+            ) : (
+              <div className="placeholder">Your code review will appear here...</div>
+            )}
           </div>
-        </div>
-        <div className="right">
-          {error && (
-            <div style={{ color: '#ff6b6b', padding: '10px', borderRadius: '5px', backgroundColor: '#ffe0e0' }}>
-              <strong>Error:</strong> {error}
-            </div>
-          )}
-          <Markdown
-            rehypePlugins={[ rehypeHighlight ]}
-          >{review}</Markdown>
-        </div>
+        </section>
       </main>
-    </>
+    </div>
   )
 }
-
-
 
 export default App
