@@ -28,7 +28,7 @@ function App() {
     setLoading(true)
     setError(``)
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/review/', { code })
+      const response = await axios.post('https://ai-code-helper-l5rv.onrender.com/api/review/', { code })
       setReview(response.data.review || "No review received")
     } catch (err) {
       setError(err.response?.data?.error || err.message || "Failed to review code")
