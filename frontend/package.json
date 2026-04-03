@@ -24,8 +24,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "NODE_ENV=production vite build",
     "preview": "vite preview",
-    "test": "echo \"No test script configured yet\""
+    "test": "echo \"No test script configured yet\"",
+    "lint": "echo \"Lint script coming soon\""
   },
   "eslintConfig": {
     "extends": [
