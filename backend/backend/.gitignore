@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-# Python
-__pycache__/
-*.pyc
-env/
-venv/
-
-# Node
-node_modules/
-
-# Environment
-.env
-
-# OS
-.DS_Store
-=======
 # ----------------------
 # Python
 # ----------------------
@@ -100,4 +84,3 @@ pip-delete-this-directory.txt
 # Project specific
 # ----------------------
 CRenv/
->>>>>>> b32389f (ready for deployment)
