@@ -17,7 +17,7 @@ import "highlight.js/styles/github-dark.css" // Theme for AI response
 import './App.css'
 
 // API URL from Environment Variables
-const API_BASE_URL = import.meta.env.VITE_CODE_REVIEW_API || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_CODE_REVIEW_API || 'https://ai-code-helper-l5rv.onrender.com';
 
 function App() {
   const [code, setCode] = useState(`function sum() {\n  return 1 + 1\n}`)
