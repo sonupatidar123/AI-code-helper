@@ -46,22 +46,6 @@
 .logo { font-weight: 800; font-size: 1.2rem; }
 .logo span { color: var(--accent-color); }
 
-.nav-links { 
-  display: flex; 
-  gap: 2rem; 
-  flex: 1; 
-  margin-left: 2rem;
-}
-
-.nav-link { 
-  text-decoration: none; 
-  color: var(--text-main); 
-  font-weight: 500; 
-  transition: color 0.2s;
-}
-
-.nav-link:hover { color: var(--accent-color); }
-
 .actions { display: flex; gap: 1rem; }
 
 /* Buttons */

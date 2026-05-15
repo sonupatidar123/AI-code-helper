@@ -1,0 +1,86 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ----------------------
+# Virtual Environments
+# ----------------------
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ----------------------
+# Django
+# ----------------------
+*.log
+logs/
+db.sqlite3
+db.sqlite3-journal
+local_settings.py
+media/
+
+# ----------------------
+# Static & Build files
+# ----------------------
+staticfiles/
+build/
+dist/
+downloads/
+.eggs/
+*.egg-info/
+*.egg
+
+# ----------------------
+# Testing & Coverage
+# ----------------------
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# ----------------------
+# Jupyter / IDE
+# ----------------------
+.ipynb_checkpoints
+.vscode/
+.idea/
+
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Deployment / Misc
+# ----------------------
+pip-log.txt
+pip-delete-this-directory.txt
+*.manifest
+*.spec
+
+# ----------------------
+# Type checking
+# ----------------------
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# ----------------------
+# Project specific
+# ----------------------
+CRenv/
