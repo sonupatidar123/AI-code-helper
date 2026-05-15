@@ -36,7 +36,7 @@ const ReviewFunnel = () => {
   const [feedback, setFeedback] = useState({ name: '', text: '' });
   const [status, setStatus] = useState('idle');
 
-  const GOOGLE_MAPS_LINK = import.meta.env.VITE_GOOGLE_MAPS_LINK;
+  const GOOGLE_MAPS_LINK = import.meta.env.VITE_GOOGLE_MAPS_LINK|| 'https://www.google.com/search?q=ak+consultancy+and+construction&sca_esv=0d82fdce82ae5c26&biw=1600&bih=765&sxsrf=ANbL-n41v9IY4PUhSnNLSoRp2CfSMHD7Xg%3A1778868684925&ei=zGEHasuTOIzt2roP5fzF2AE&oq=ak&gs_lp=Egxnd3Mtd2l6LXNlcnAiAmFrKgIIADIEECMYJzIEECMYJzILEAAYgAQYigUYkQIyCxAAGIAEGIoFGJECMhEQLhiABBiKBRiRAhjHARivATILEAAYgAQYigUYkQIyCxAAGIAEGIoFGJECMhAQABiABBiKBRixAxiDARgKMgsQLhiABBixAxiDATIIEC4YgAQYsQNI1jFQvBpYix5wBHgAkAEAmAHtAqABzQWqAQMzLTK4AQHIAQD4AQGYAgagAv0JqAIUwgIHECMY6gIYJ8ICChAjGPAFGOoCGCfCAgcQLhjqAhgnwgIXEAAYgAQYigUYkQIY5wYY6gIYtALYAQHCAh0QLhiABBiKBRiRAhjnBhjHARivARjqAhi0AtgBAcICEBAAGAMYjwEY6gIYtALYAQHCAhAQLhgDGI8BGOoCGLQC2AEBwgIKECMYgAQYigUYJ8ICERAuGIAEGIoFGJECGMcBGNEDwgIFEAAYgATCAhEQLhiABBixAxiDARjHARjRA8ICCBAAGIAEGLEDmAO3A_EFwzqV1XPOfbW6BgYIARABGAGSBwczLjMtMi4xoAflI7IHAzMtMrgH-QXCBwkzLTMuMi43LTHIB_cDgAgB&sclient=gws-wiz-serp#lrd=0x3962fd80001c4c05:0xa12cde99a5d1e5ad,3,,,,';
   
   const handleRatingClick = (selectedRating) => {
     setRating(selectedRating);
