@@ -36,7 +36,9 @@ const ReviewFunnel = () => {
   const [feedback, setFeedback] = useState({ name: '', text: '' });
   const [status, setStatus] = useState('idle');
 
-  const GOOGLE_MAPS_LINK = import.meta.env.VITE_GOOGLE_MAPS_LINK|| 'https://g.page/r/Ca3l0aWZ3iyhEBM/review'
+  const GOOGLE_MAPS_LINK = import.meta.env.VITE_GOOGLE_MAPS_LINK || 'https://g.page/r/Ca3l0aWZ3iyhEBM/review';
+
+  const handleRatingClick = (selectedRating) => {
     setRating(selectedRating);
     if (selectedRating >= 4) {
       setStep('google');
